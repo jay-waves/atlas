@@ -1,5 +1,5 @@
 
-#import "@local/ypst-template:0.1.0": template, sidenote, mermaid
+#import "@local/ypst-template:0.1.0": template, sidenote
 #show: template
 
 #let bmat(..args) = math.mat(delim: "[", ..args)
@@ -11,9 +11,8 @@
 
 几何渲染阶段：
 
-```mermaid
-flowchart LR;
-  A[View Transform]-->B[Vertex Shading]-->C[Projection]-->D[Clipping]-->E[Screen Mapping];
+```
+  [View Transform]-->[Vertex Shading]-->[Projection]-->[Clipping]-->[Screen Mapping];
 ``` 
 
 == 模型和视图变换
@@ -48,16 +47,14 @@ _着色 (shading)_ 是指确定虚拟材质上的光照、颜色、纹理效果�
 + 像素着色（Pixel Shading）：根据三角形顶点的着色数据（几何阶段）来计算像素着色。
 + 融合（Merging）：将每个像素的各类颜色缓冲区数据融合（如 RGBA、Z缓冲）。
 
-```mermaid
-flowchart LR;
-  A[Triangle Setup]-->B[Triangle Traversal]-->C[Pixel Shading]-->D[Merging];
+```
+[Triangle Setup]-->[Triangle Traversal]-->[Pixel Shading]-->[Merging];
 ```
 
 = GPU Pipeline 
 
-```mermaid
-flowchart LR;
-  A[Vertex Shader]-->B[Clipping]-->C[Screen Mapping]-->D[Triangle]-->E[Pixel Shader]-->F[Merger]
+```
+[Vertex Shader] --> [Clipping] --> [Screen Mapping] --> [Triangle] --> [Pixel Shader] --> [Merger]
 ```
 
 其中 Vertex Shader (VS) 和 Pixel Shader (PS) 是可编程的，其他的受限。着色阶段有独立的编程语言，如 GLSL、HLSL、Slang，

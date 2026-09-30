@@ -11,6 +11,28 @@
 
 ## Camera 
 
+成像相关知识见 [imaging/photography](./imaging/photography.md)
+
+CMOS vs. CCD 
+
+Stereo Camera
+
+3D ToF (Time-of-Flight) Sensor
+
+![](../assets/vision/eyeball.webp)
+
+![](../assets/vision/cons-robs.webp)
+
+Retina (视网膜) is covered by light receptors (i.e., cones & rods, 视锥细胞、视杆细胞),
+* cones: 6~7 millions, located in central (circular) portion of retina, highly sensitive to color
+* robs: 75+ millions, distributed over retinal surface, giving a general picture of field of view
+
+人眼的大概参数：
+* 等效焦距: 20mm,
+* 中心视野像素: 500m pixels,
+* 光圈: f/2.1~f/8.3. 通过虹膜 (iris) 调节
+* 快门大概 50~90 Hz , 连续采样、中心视野不断跳动、大脑补帧渲染
+
 相机的曝光
 * ISO 
 * 光圈

@@ -72,9 +72,12 @@ $$\hat{F}=\frac{F(u,v)\cdot H(u,v)+N(u,v)}{H(u,v)}=F(u,v)+\frac{N(u,v)}{H(u,v)}$
 
 ### 2 维纳滤波
 
-维纳滤波使最小均方误差接近最小: $$e^{2}=E\{[\hat{f}(x,y)-f(x,y)]^{2}\}$$
+维纳滤波使最小均方误差接近最小: 
+
+$$e^{2}=E\{[\hat{f}(x,y)-f(x,y)]^{2}\}$$
 
 若噪声与图像不相关:
+
 $$\begin{align}
 & \hat{F}(u,v)  \\
 &= \left[ \frac{H^{*}(u,v)}{\vert H(u,v)\vert^{2}+\gamma[S_{n}(u,v)/S_{f}(u,v)]} \right]\cdot G(u,v) \\

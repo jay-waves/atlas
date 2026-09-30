@@ -28,6 +28,12 @@ bash 有两种展开类型：
 (cd /tmp && command)
 ```
 
+Bash 有四种可执行命令:
+- bin
+- shell builtins 
+- shell functions 
+- alias
+
 ## Bash Script
 
 Bash 有脚本能力，但是并不推荐写，隐蔽行为太多。越自作聪明，调试代码就越痛苦。   
@@ -205,10 +211,3 @@ printf '%s\0' *.jpg | xargs -0 -n1 -P8 convert
 parallel -j8 'convert {} {.}.png' ::: *.jpg
 ```
 
-## Bash 热键
-
-- `Ctrl-r`: 查找历史命令
-- `Tab`: 补全
-- `Ctrl-a, Ctrl-e`: 行首, 行尾
-
-更推荐用 vim 模式来编辑长命令。

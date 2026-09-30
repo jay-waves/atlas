@@ -1,6 +1,0 @@
-
-## Lighting
-
-## Perspective 
-
-## Color Grading 

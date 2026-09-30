@@ -20,7 +20,7 @@ of the robot can reach.
 
 平面上的刚体有三个自由度： $(x, y, theta)$ 分别对应 xy 方向的平移与绕垂直轴旋转。
 
-空间中的刚体有六个自由度： $(x,y,z, "roll","yaw","pitch")$ #footnote[roll,yaw,pithc 翻译为： 滚转、俯仰、偏航]
+空间中的刚体有六个自由度： $(x,y,z, "roll","yaw","pitch")$ #footnote[roll,yaw,pitch 翻译为： 滚转、俯仰、偏航]
 
 #image("../assets/robo/adam-lite.webp", width: 50%)
 
@@ -221,7 +221,6 @@ Screw axis $cal(S)={q,hat(s),h}$ represents the motion of a screw: rotating abou
 #figure(
   image("../assets/robo/screw-axis.webp", width: 50%),
   caption: [Modern Robotics F3.19],
-  numbering: none
 )
 
 write the twist $cal(V)=(w,v)$ to an angular velocity $dot(theta)$ about $cal(S)$ as: 

@@ -1,30 +1,11 @@
 
-#import "@local/ypst-template:0.1.0": template, sidenote, mermaid
+#import "@local/ypst-template:0.1.0": template, sidenote
 #show: template
 
 #let bmat(..args) = math.mat(delim: "[", ..args)
 #let vec(x) = math.bold(math.upright(x))
 
-= 光照
-
-光照和物质的相互作用会产生两种结果：_散射（scattering）_ 和 _吸收（absorption）_。当光线照射在介质分界处时，
-散射会分开为_反射（reflection）_和_透射（transmission）_，同时有一部分光量被介质吸收。
-
-反射光不集中在镜像方向，而是在较宽范围内出射，称为_漫反射（diffuse reflection）_。反射光是否密集，一般决定于
-介质分界处的_表面粗糙度 (roughness)_。 光线经过某个介质分界处， 传播速度改变，导致观察出的传播方向发生偏折，
-称为_折射（refraction）_。
-
-#sidenote[
-三种不同的光线类型：
-- 平行光源（太阳光）
-- 点光源（_Point Light_）：光从一个点向四面八方发射。
-- 聚光灯（_Spot Light_）：光只超一个方向的锥形范围发射。
-][
-  漫反射不一定发生在介质交界处（表面散射）。还有一部分漫反射光，来自透射光在介质体内的重新反射。
-]
-
-
-= 点着色
+= 点着色（Illumination）
 
 _冯氏光照模型（Phong Illumination Model）_记为：
 

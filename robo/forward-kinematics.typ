@@ -14,7 +14,7 @@
 
 == D-H
 
-Denavit-Hartenberg form:
+enavit-Hartenberg form:
 
 $ T_04 = T_01 T_(12) T_23 T_34 $
 

@@ -24,7 +24,7 @@ Fixed Data Conventions:
 
 ### Yield Curve
 
-![](../assets/econ/econ-yield-curve.webp)
+![](../../assets/econ/econ-yield-curve.webp)
 
 ## Money Market Instruments 
 

@@ -34,7 +34,9 @@ $$H=\sum^{M}_{k=1}P_{K}(W_{k})\cdot I(W_{k})=-\sum^{M}_{k=1}P_{k}\log_{2}P_{k}$$
 无记忆信息熵 ( 0阶熵, $H_{0}(\cdot)$ ): 各像素的灰度值是相互独立的.
 
 **条件熵**: 对于记忆信源, 假设某一像素灰度值和前一个像素灰度级相关.
+
 $$H\left( \frac{W_{i}}{W_{i-1}} \right)=-\sum^{M}_{k=1}\sum^{M}_{k=1}P(W_{i}, W_{i-1})\cdot \log_{2}P\left( \frac{W_{i}}{W_{i-1}} \right)$$
+
 而其中 $P(W_{i}, W_{i-1})=P(W_{i})P\left( \frac{W_{i}}{W_{i-1}} \right)$. 称为一阶熵 $H_{1}(\cdot)$. 
 
 可知 $H_{0}(\cdot)>H_{1}(\cdot)>H_{2}(\cdot)>\dots$
@@ -43,7 +45,7 @@ $$H\left( \frac{W_{i}}{W_{i-1}} \right)=-\sum^{M}_{k=1}\sum^{M}_{k=1}P(W_{i}, W_
 
 ## 2 编码
 
-![熵编码](../../math/infoth/熵编码.md)
+[熵编码](../../math/infoth/熵编码.md)
 
 图像常见编码方式有:
 1. 哈夫曼编码

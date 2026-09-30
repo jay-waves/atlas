@@ -1,12 +1,18 @@
 
-## Stacked 
+## Flexbox 
 
-## Masonry 
+## Grid
 
-## Card
+## Layout 
+### Stacked 
 
-## Collage 
+### Masonry 
 
-## Floating
+### Card
 
-## Popup
+### Collage 
+
+### Floating
+
+### Popup
+

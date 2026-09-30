@@ -48,6 +48,8 @@
 * cyrillic 西里尔字幕，指俄语、乌克兰语 
 * greek 希腊字母，以及数学科学符号
 
+一般而言，Language-Specific 字体是指定了默认的字符集，但是仍包含全部字符集。
+Region-Specific 字体是彻底裁切了不用的字符集，因此体积会小很多。
 
 ## Mono
 

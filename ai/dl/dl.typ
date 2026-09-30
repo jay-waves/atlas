@@ -62,7 +62,7 @@ sufficiently *wide* & single hidden layer + suitable nonlinear activation funcit
 - $K$ as the number of layers 
 - $D_i$ as the number fo hidden units in $i$ layer
 - $beta_k$ as the vector of biases (intercepts) contibuted to hidden layer $k+1$
-- $k^"th"$ as the weights (slopes) for the $k$ layer 
+- $k^"th"$ as the weights (slopes) for the $k$ layer
 
 $ vec(y) = f[vec(x), vec(phi.alt)],quad vec(phi.alt) = {vec(beta)_i, vec(Omega)_i}^K $
 
@@ -81,3 +81,4 @@ $
   image("../../assets/ai/deep-neural-network.webp", width: 60%),
 )
 
+== Loss function

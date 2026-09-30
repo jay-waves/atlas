@@ -67,12 +67,17 @@
 ### Reference
 
 - 仓库整体使用 [CC-BY](license.md) 许可证，部分摘录文章或原创文章使用不同版权许可的，在文章开头标明
-- 提及人名或组织名时，使用：@google、@github/jay-waves、@yayvyn 
-- 引用时，使用简写格式： `[ITU-T x.800, 2002, p22]` `[Bjarne Stroustrup, 2014]` ，人名、文章名、期刊名皆可以简写。
+- 引用格式：`[Bjarne Stroustrup, 2014, p22]`, `@yayvyn2012` 皆可，可缩写，完整信息存放在 `references.bib` 文件中。
 
 ### Attachments 
 
 * 图片附件按 `assets/<主题>/` 一级目录归档，并与引用它们的笔记一起提交。
-* 图片如有版权信息，同样需要在 `[]` 中著名来源
+* 图片如有版权信息，同样需要著名来源, 形式如：
+
+```html
+![foo, 2008](xxx/yyy)
+
+<img src="xxx/yyy" alt="... @foo208">
+```
 
 
