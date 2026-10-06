@@ -77,8 +77,6 @@ $ file index.html
  index.html: HTML document, ASCII text
 ```
 
-更现代的工具: binwalk.
-
 ### `chattr`
 
 `chattr` 修改文件属性, 比文件权限更底层.

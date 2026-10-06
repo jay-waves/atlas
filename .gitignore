@@ -15,8 +15,6 @@
 *.drawio~
 *.drawio.dtmp
 
-# Typst 生成文件
-*.pdf
 /.typst/
 
 # 系统文件

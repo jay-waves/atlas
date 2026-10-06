@@ -1,5 +1,6 @@
 
 CMD 寻求帮助:
+
 1. `/?`
 2. `help for cmd`
 3. **如果没有现成命令, 不要试图用 CMD 解决问题**
@@ -41,7 +42,7 @@ powershell 为 bash 和 cmd 用户准备了对应命令的别名.
 | `^`  (换行跳脱符)        | \`                                                      | `\`                         |                         |
 | `where`                  | `get-command`                                           | `where`                     | `where`                        |
 
-Powershell 中想要直接使用 CMD 中命令, 而不是别名, 请加上 `.exe` 后缀.
+Powershell 中想要直接使用 CMD 中命令, 而不是别名, 请加上 `.exe` 后缀. 这一点 WSL 中同理.
 
 ### Invoke-WebRequest
 
@@ -51,20 +52,6 @@ Powershell 中 `curl` 实际是 `Invoke-WebRequest` 的别名 (不是[原来的�
 - `-Proxy` --> `-x`
 - `-Headers` --> `-H`
 - `-ContentType` --> `-X`
-
-### 变量
-
-pwsl 其实不区分大小写, 别被命令吓到了 (🖤)
-
-```powershell
-$MyVar = "hello, world!"
-
-Write-Output $MyVar
-
-Get-Type $MyVar
-
-$homeDir = $env:USERPROFILE
-```
 
 ### 遍历
 
@@ -79,20 +66,7 @@ gci -Filter *.avif | % {
 }
 ```
 
-用 `$_` 引用子项的元数据:
-- `$_.FullName` 含路径的文件名
-- `$_.Name` 文件名
-- `$_.BaseName` 不含扩展名的文件名
-- `$_.Extension` 文件扩展名
-- `$_.DirectoryName` 路径
-- `$_.Length` 大小, 以字节为单位
-
-注意, 使用 ForEach 管道时, 不能使用 `.` 或 `..`. 如果需要字符串命令替换, 请使用 `"$($_.FullName)\....."`
-
-另外, 字符串插值 `"$Var"` 只支持简单变量. 复杂解析应使用子表达式 `$()`, 如 `"$($_.Name)xxxx"`. 
-
-如果子表达式 `$()` 返回多个结果, 将会自动展开为数组 (而不是空格隔开的字符串). 这导致子表达式很难直接嵌入到批处理命令中, 比如 `mv $(fd xxx.*)` 很可能报错, 此时仍需要使用 `ForEach-Object` 遍历列表.
-
+Powershell 的命令替换和字符串转义非常难用，建议不要手写。
 
 ## Q&A 1
 

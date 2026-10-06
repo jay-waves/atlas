@@ -14,29 +14,26 @@ revised: 2026-01-27
 
 ## Windows GUI
 
-* 邮箱： GMail、QQMail WEB 、~~Thunderbird~~
-* PDF 阅读：pdf.ts、~~SumatraPDF、Readest~~ 
-* PDF 编辑：Stirling PDF、~~Adobe Acrobat DC~~
-* EPUB 阅读：epub.ts、 ~~Readest（Jane Reader 分支）~~
-* 笔记：NVim、~~Obsidian~~ 
+* 邮箱： GMail、QQMail WEB 
+* PDF、EPUB 阅读：epub.ts / pdf.ts 
+* PDF、EPUB 编辑：Stirling PDF / Sigil 
+* 笔记：NVim
 * 代码：Zed 、~~VSCode~~
 * 流程图：DrawIO、PPT、reveal.js、Mermaid.js 
-* 终端：Windows Terminal，Alacritty（Linux 平台）
 * 截图与贴图：Snipaste
 * 远程桌面：向日葵、RustDesk 
 * 应用卸载器：geek, O&O AppBuster
 * 视频播放：mpv
 * 视频处理：ffmpeg、HandBrake、ClipChamp 
 * 图像处理：ImageMagic、GIMP3 
-* 录屏：OBS-Studio （简单场景，有 WEB 应用替代品）
 * 媒体库：[Allusion](https://github.com/RafaUC/Allusion)、Calibre、Jellyfin 
-* 抓包：wireshark 
-* 二进制查看：imhex 
 * 手机传文件：LocalSend     
+* 访达：Wox
 
 文件系统增强：
 * 文件压缩、解压缩：[7-Zip-zstd](https://github.com/mcmilk/7-Zip-zstd)
 * 文件系统缩略图：SageThumbs2K
+* 文件索引：Everything 
 
 ### Windows OS
 
@@ -46,48 +43,23 @@ revised: 2026-01-27
 * CPU 性能测试：CPU-Z
 * 硬盘管理：CrystallDiskInfo、DiskGenius 
 
-## Cli
+## Shell & Terminal 
 
-- Bash 相关见 [/os/bash ](../os/bash.md)
-- Powershell 相关间 [/os/powershell](../os/powershell.md)
+详见 [shell.md](./shell.md)
 
-<br>
+终端：Windows Terminal，Ghostty（Linux 平台）, Alacritty
 
-- **[`pandoc`](http://pandoc.org/)** 
-- iconv, uchardet [char-encoding](../hw/char-encoding.md)工具
-- **fzf**, 模糊查找工具
-- tldr
-- rclone 云存储工具
-- strings 读取二进制中的字符串片段
-- psmux, tmux 终端多路复用器
+基础终端工具配置：
 
-<br>
-
-
-~~[yazi](https://github.com/sxyazi/yazi) 命令行文件管理器~~ 最近更喜欢 [lf](https://github.com/gokcehan/lf)，配置如下：
 * `VISUAL = 'nvim'`
 * `EDITOR = 'nvim'`
 * `PAGER = 'bat --pager=builtin'`
 * `SHELL = 'pwsh'`
 
+一些 TUI 程序：
 
-| GNU  | Rewrite-in-Rust | Powershell | Description |
-| ----- | ------------- | ---------- | --------- |
-| lsdisk  | duf         |    | 磁盘统计            |
-| du    | dust          |    |  目录下文件体积统计（直方图） |
-| grep  | ripgrep       | findstr   |     |
-| find  | fd            |      |     |
-| cat   | bat           | Get-Content |  |
-| cloc  | tokei         |    |    |
-| file  |               |    |    |
-| cd    | zoxide        |    |    |
-| man   | tldr          |    | 百科全书，简短版   |
-| diff  | delta      |    |    |
-| curl  |  xh           | Invoke-WebRequest   |    |
-
-
-> Windows 上还有一些绿色（不依赖 MinGW） GNU 工具移植：[GNUwin32](https://gnuwin32.sourceforge.net/packages.html),
-> `Microsoft.CoreUtils`
+* [lf](https://github.com/gokcehan/lf), 命令行文件管理和浏览
+* psmux, tmux 终端多路复用
 
 
 ## Browser Plugins
@@ -114,14 +86,9 @@ revised: 2026-01-27
 also see [.bashrc](bashrc.md), here is the GUI choice:
 
 * flameshot 截图贴图工具
-* Alacritty 命令行
+* ~~Alacritty~~ Ghostty 命令行
 * chrome 比 firefox 稳定很多
 * ibus with rime engine
-
-其他命令行配置见发行版：
-* [wsl](../os/vm/wsl-config.md)
-* [distros-arch](../os/linux/distros-arch.md)
-* [distros-fedora](../os/linux/distros-fedora.md)
 
 ## DEV
 

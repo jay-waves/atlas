@@ -1,31 +1,31 @@
-
-## 网络连通性测试
-
-| 工具            | 用途                             | 示例                         | 所用协议        |
-| --------------- | -------------------------------- | ---------------------------- | --------------- |
-| `ping`          | 测试延迟                         | `ping 8.8.8.8`               | ICMP            |
-| `traceroute`    | 跟踪路由路径                     | `traceroute google.com`      |                 |
-| `mtr`[^1]          | 动态跟踪路由路径, 监控延迟和丢包 | `mtr google.com`             |                 |
-| `telnet/netcat` | 测试特定端口连通性               | `telnet google.com 80`       |                 |
-| `curl/wget`     | 测试 HTTP/HTTPS 等应用层服务     | `curl -I https://google.com` | HTTP, SMTP, FTP |
-| `nmap`          | 局域网端口扫描, 安全测试服务       | `nmap google.com`            | TCP/UDP, ICMP   |
-| `nslookup`      | 查询 [DNS](../../net/app-l5/DNS.md), 简单信息(IP, CNAME)    | `nslookup google.com`        |                 |
-| `dig`           | 查询 [DNS](../../net/app-l5/DNS.md), 详细信息(A, MX, TXT)   |                              |                 |
-| `whois`         | 查询域名或地址的注册商, 注册信息 |                              |                 |
-
+## 网络测试
 
 一些 WEB 端服务:
+
 - `https://ipinfo.io/`, IP 信息及地理位置
 - `https://www.pingdom.com/` 网站的运行时间和响应速度
 - `https://dnschecker.org/` DNS 记录查询, 以及 DNS 缓存传播检测
 - `https://lookup.icann.org/en` 在线 WhoIS
-- 
 
-[^1]: [`mtr`](http://www.bitwizard.nl/mtr/), my traceroute, = traceroute+ping. 提供了交互界面, 不过不太火.
+工具的大致分类：
 
-## 网络连通问题排查思路
+ 功能 | Unix 工具 | Windows 工具 | 新工具 | 网络层次 
+ -----|-----------|--------------| -----------| --------------
+本机网卡配置 | ip | ipconfig  
+本机连接探测 | ss | netstat | rustnet
+DNS 查询 | dig, nslookup, whois 
+网络路径 | ping, traceroute | | trippy | 传输层以下
+端口可达性 | nc, ncat | 
+TLS/HTTP | curl | wget | xh  | 应用层 
+抓包 (DPI) | wireshark, ngrep 
 
-#BP 
+其他功能：
+
+* 网络代理配置 mihomo
+* 网络性能测试：带宽、延时、吞吐
+* 渗透测试工具
+
+## 连通问题排查思路
 
 1. (L1) 确认主机网卡状态 `ifconifg`，如 DOWN、RX/TX error 
 2. 查看链路错误 `ip -s link`，如果存在大量错误，怀疑交换机、网线、网卡驱动。
@@ -39,7 +39,7 @@
 10. 检查 TCP 端口冲突，或者连接数限制
 11. (L5) 用 `htop` 查看是否应用卡死，查看应用日志
 
-## 如何查看网路配置？
+## `ip addr`
 
 ```bash 
 $ ip addr
@@ -62,17 +62,8 @@ $ ip addr
 * `LOWER_UP` 物理网线连通
 * `UP` 网卡驱动正常
 
-### 查询 [DNS](../../net/app-l5/DNS.md)
+## `ss`
 
-```bash
-nslookup google.com # 域名映射到 IP
-
-dig domain # 查询详细 DNS 信息
-```
-
-## 如何查看套接字信息？
-
-用 `ss` (socket staticstics) 替代 `netstat`，
 * -t/u 查询 TCP/UDP 连接
 * -p 显示进程信息，如 PID 和进程名
 * -l 过滤 LISTEN 状态的套接字
@@ -88,10 +79,12 @@ LISTEN       0          20        [::1]:25               [::]:*
 ```
 
 当 Socket 处于 `Established` 状态时，
+
 * `Recv-Q` 表示缓冲区中还未被读取的字节数
 * `Send-Q` 表示缓冲区中还没被远端主机确定的字节数
 
 当 Socket 处于 `Listen` 时，
+
 * `Recv-Q` 表示全连接队列的长度
 * `Send-Q` 表示全连接队列的最大长度。全连接队列是指完成三次握手后，还没有被 `accept()` 取走的连接的存储队列。
 
@@ -106,25 +99,8 @@ while(true) {
 }
 ```
 
-## 如何查看性能指标？
+## PenTest
 
-性能指标详见 [分布式网络架构](../../db/readme.md)：
-* 带宽 b/s
-* 延时：排队延时、传输延时
-* 吞吐量 b/s 
-* QPS （Query per Second）
-
-### 监控延迟和连通性
-
-`ping` 即可
-
-### 监控网络流量速度
-
-[`iftop`](http://www.ex-parrot.com/~pdw/iftop/), [`bandwhich`](https://github.com/imsnif/bandwhich) 或 [`nethogs`](https://github.com/raboof/nethogs) 用于查看带宽的统计情况。`iftop` 查看某个端口占用大量宽带，`ss` 查询该端口对应的进程。
-
-`sar` 也可以查看网络吞吐量 `sar -b 1`。详见 [sysstat-sar](sys-stat.md)
-
-
-## 过滤网络报文
-
-[`wireshark`](https://wireshark.org/), [`tshark`](https://www.wireshark.org/docs/wsug_html_chunked/AppToolstshark.html) 和 [`ngrep`](http://ngrep.sourceforge.net/) 都是用于截获过滤报文的工具. 其中 tshark 和 ngrep 是命令行工具.
+* nmap
+* sql-map
+* burpsuite

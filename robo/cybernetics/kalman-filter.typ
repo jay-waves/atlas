@@ -269,19 +269,72 @@ $P$ 是当前估计的置信度，$R$ 是测量噪声。当 $R->0$ 时，有 $P^
 
 == 连续时间下的卡尔曼滤波形式
 
-根据线性系统#footnote[详见 `./sampling.typ`]的离散化关系，有：$ F = e^(A Delta t) approx I + A Delta t $
+根据线性系统#footnote[详见采样与系统离散化 `./sampling.typ`]的离散化关系，
+有：$ F = e^(A Delta t) approx I + A Delta t $
 
 代入离散协方差公式：
 
 $ P_(k+1) 
   & = (I+ A Delta t )P_k (I + A Delta t)^top + Q_d \
-  & = P_k + (A P_k + P_k A^top) Delta t + A P_k A^top Delta t^2 + Q_d \
-  Q_d 
-  &= G Q_c G^top Delta t
+  & = P_k + (A P_k + P_k A^top) Delta t + A P_k A^top Delta t^2 + Q_d 
 $
+
+其中 $Q_d approx Q_c Delta t$ ，详细解释见下文 @appx:qc
 
 忽略二阶项得到：
 
 $
-  dot(P) = frac(P_(k+1) - P_k, Delta t) approx A P_k + P_k A^top + G Q_c G^top
+  dot(P) = frac(P_(k+1) - P_k, Delta t) approx A P_k + P_k A^top + Q_c
 $
+
+=== 噪声项的处理 <appx:qc> 
+
+确定性的时不变系统中，没有 KF 需要考虑的 $w_c(t)$ 白噪声。因此 $Q_d$ 项需要额外处理。
+
+对于白噪声 $w_c$ ，它在不同时刻是不相关的，即：
+
+#sidenote[
+  $
+    E[w_c(t) w_c(tau)^T] = Q_c delta(t - tau),
+  $
+
+  离散过程噪声是把这一整段连续噪声累积起来：
+
+  $
+    w_k
+    = integral_0^(Delta t)
+      e^(A(Delta t - tau)) w_c(tau)
+      dif tau.
+  $
+
+][
+   Dirac Delta 函数满足：
+
+  $
+    delta(t) = 0, quad t != 0
+  $
+
+  $
+    integral_(-infinity)^infinity delta(t) dif t = 1
+  $
+
+  筛选性质：
+
+  $
+    integral f(t) delta(t - t_0) dif t = f(t_0)
+  $ 
+]
+
+然后计算
+
+$
+  E[w_k w_k^T] & = Q_d
+  = integral_0^(Delta t) e^(A tau) Q_c e^(A^top tau) dif tau \
+  &approx integral_0^(Delta t) (I+ A tau) Q_c (I + A^top tau) dif tau \
+  &approx integral_0^(Delta t) [Q_c + (A Q_c + Q_c A^top) tau] dif tau
+  & Q_c Delta t
+$
+
+所以有近似结果 $Q_d approx Q_c Delta t$ 。
+
+

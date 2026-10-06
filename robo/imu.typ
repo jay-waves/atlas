@@ -292,7 +292,7 @@ $ a_w = dot(delta a_b) $
 将上述 Error-State 的建模，改写为标准卡尔曼滤波形式（连续时间下）：
 
 $
-x = bmat(p; v; q; a_b; w_b; g)_(16 times 1),
+x = bmat(p; v; q; a_b; w_b; g)_(19 times 1),
 quad 
 delta x = bmat(
   delta p;
@@ -301,7 +301,7 @@ delta x = bmat(
   delta a_b;
   delta omega_b;
   delta g
-)_(15 times 1),
+)_(18 times 1),
 quad 
 u_m = bmat(
   a_m;
@@ -348,19 +348,34 @@ G = bmat(
 )
 $
 
-卡尔曼滤波#footnote[卡尔曼滤波详见 `./cybernetics/kalman-filter.typ`]的预测阶段：
+迭代方式 (连续时间)：
 
 #theme.sidenote[
-
   $
-  delta x^- &<- F dot delta x^+ + G n \
-  P^- &<- F P^+ F^top + G Q_c G^top
+  delta x^- &<- F dot delta x^+ + G n 
   $
-
 ][
 
   这里 $F, G$ 不过是用于转换坐标系的雅各比矩阵而已。
 ]
+
+卡尔曼滤波#footnote[卡尔曼滤波详见 `./cybernetics/kalman-filter.typ`]一般要求在离散时间进行迭代，
+参考信号采样方法#footnote[推导详见 `./cybernetics/sampling.typ` 和 `./cybernetics/kalman-filter.typ` 文末 ]，
+设采样时间 $Delta t$，在区间内冻结瞬时变化 $F, G, Q_c$ ，积分得到：
+
+$ delta x_(k+1) = Phi_k delta x_k + omega_k,quad Phi_k = e^(F_k Delta t) $
+
+其中 $w_k$ 是这段时间的噪声 $n$ 的作用，其协方差（近似）为：
+
+$ Q_(d,k)approx G_k Q_c G_k^top Delta t $
+
+因此，预测阶段：
+
+  $
+  delta x^- &<- Phi delta x^+ + omega \
+  P^- &<- Phi P^+ Phi^top + Q_d
+  $
+
 
 === Kalman Filter (Update Stage)
 
@@ -484,29 +499,32 @@ $ x^+ = x^- plus.o delta x^+ $
 
 $ x_t = x^- plus.o delta x = x^+ plus.o delta x_"new" $
 
-定义 $delta x_"new" = f(delta x) = (x^- plus.o delta x)minus.o x^+$ ，#footnote[注意这里的运算需要考虑四元数，不能交换。但是大意就是：$f(delta x) = (x^- + delta x)-x^+= delta x - delta x^+$]
+定义 $delta x_"new" = f(delta x) = (x^- plus.o delta x)minus.o x^+$ ，
+#footnote[注意这里的运算需要考虑四元数，不能交换。但是大意就是：$f(delta x) = (x^- + delta x)-x^+= delta x - delta x^+$]
 $f(delta x^+) = 0$，在接近 $delta x^+$ 处一阶展开得到：
 
 $
-delta x_"new" approx F (delta x - delta x^+) ,quad F eq.def attach(
+  delta x_"new" approx J_"reset" (delta x - delta x^+) ,quad 
+  J_"reset" eq.def attach(
     lr(frac(partial f, partial delta x)|),
     b: delta x = delta x^+
-)
+  )
 $
 
-记 $e^+ = delta x - delta x^+, quad delta x_"new" = F e^+$，新的协方差为：
+记 $e^+ = delta x - delta x^+, quad delta x_"new" = J_"reset" e^+$，新的协方差为：
 
 $
   P_"new"
-    &approx E[(F e^+)(F e^+)^top] \
-    &= F E[e^+ e^+^top] F^top = F P^+ F^top
+    &approx E[(J_"reset" e^+)(J_"reset" e^+)^top] \
+    &= J_"reset" E[e^+ e^+^top] J_"reset"^top \
+    &=J_"reset" P^+ J_"reset"^top
 $
 
 *在注入误差，并修正 $P$ 之后，丢弃估计值 $delta x^+$ ，在下一轮迭代中重新计算*。因此，Reset 阶段的实际工作是：
 
 $
   delta x &<- 0 \
-  P &<-  F P^+ F^top
+  P &<-  J_"reset" P^+ J_"reset"^top
 $
 
 至此，ESKF 的总体流程如下：
@@ -535,7 +553,7 @@ $
   ]),
   node((0, 5), align(center)[
     Reset Error Estimate \
-    $P <- F P^+ F^top$ \
+    $P <- J_"reset" P^+ J_"reset"^top$ \
     $delta x <- 0$
   ]),
 

@@ -17,7 +17,18 @@
 
 ### TODO: 图像亮度感受
 
-**韦伯-弗赫涅尔定律 (主观亮度感觉)** $S=klogB+k_{0}$, B 为真实光强. 
+## 亮度的感受
+
+### Subjective Brightness (Weber-Fechner Law)
+
+<img src="../assets/vision/light-perception.webp">
+
+$$S=klogB+k_{0}$$
+
+其中 B 为真实光强. 
+
+### Mach Effect 
 
 人眼亮度**变化**感觉: $$\triangle\{L_{1},\ L_{2}\} = \log_{B}(y+\triangle y)-\log_{B}y$$ 马赫效应 Mach Effect: 环境的凸显效应, 灰色在白环境中显得更亮.
 
+*原彩显示*技术就是让屏幕主动适应环境光，使得不同环境下的主观感受的屏幕色彩一致。
