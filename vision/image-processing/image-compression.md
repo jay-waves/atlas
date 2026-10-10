@@ -32,18 +32,29 @@ f(x,y)&=\sum\limits^{N-1}_{u=0}\sum\limits^{N-1}_{v=0}\mathcal{F(u,v)}\cdot h(x,
 - $f(x-x_{0},y-y_{0})\equiv F(u,v)\exp[-j2\pi(ux_{0}+vy_{0})/N]$
 - $F(u-u_{0},v-v_{0})\equiv f(x,y)\exp[j2\pi(u_{0}x+v_{0}y)/N]$
 
-时域 $f(x,y)$ 移动时, 频域仅发生相移, 傅里叶变换幅值不变: $$\vert F(u,v)\exp[-j2\pi(ux_{0}+vy_{0})/N]\vert=\lvert F(u,v)\rvert$$ 因而常将 $F(u,v)$ 平移到图像中心 $\left( \frac{N}{2}, \frac{N}{2} \right)$, 以使频谱更加清晰: $$f(x,y)(-1)^{x+y}\equiv f(x,y)\exp[j\pi (x+y)]\equiv F(u-\frac{N}{2}, v-\frac{N}{2})$$
+时域 $f(x,y)$ 移动时, 频域仅发生相移, 傅里叶变换幅值不变: 
+
+$$\vert F(u,v)\exp[-j2\pi(ux_{0}+vy_{0})/N]\vert=\lvert F(u,v)\rvert$$
+
+因而常将 $F(u,v)$ 平移到图像中心 $\left( \frac{N}{2}, \frac{N}{2} \right)$, 以使频谱更加清晰: 
+
+$$f(x,y)(-1)^{x+y}\equiv f(x,y)\exp[j\pi (x+y)]\equiv F(u-\frac{N}{2}, v-\frac{N}{2})$$
 
 
 ## 离散沃尔什变换
 
 ### 一阶离散沃尔什变换
 
-离散沃尔什变换 (Discrete Walsh Transform, DWT) 用于提取图像二值特征, 仅涉及加减法, 不涉及复数, 运算更高效. 有能量集中特性, 数据分布方差较小时, 变换后数据集中于矩阵角上, 也可用于压缩图像.
+离散沃尔什变换 (Discrete Walsh Transform, DWT) 用于提取图像二值特征, 仅涉及加减法, 不涉及复数, 运算更高效. 
+有能量集中特性, 数据分布方差较小时, 变换后数据集中于矩阵角上, 也可用于压缩图像.
 
-设 $N=2^{n}$, 一维沃尔什变换为: $$W(u)=\frac{1}{N}\sum\limits^{N=1}_{x=0}f(x)\cdot G$$
+设 $N=2^{n}$, 一维沃尔什变换为: 
 
-变换核为: $$\large G=\prod\limits^{n-1}_{i=0}(-1)^{b_{i}(x)b_{(n-1-i)}(u)}$$ 其中 $b_{k}(I)$ 是 I 的二进制表示的第 k 位:
+$$W(u)=\frac{1}{N}\sum\limits^{N=1}_{x=0}f(x)\cdot G$$
+
+变换核为: $$\large G=\prod\limits^{n-1}_{i=0}(-1)^{b_{i}(x)b_{(n-1-i)}(u)}$$ 
+
+其中 $b_{k}(I)$ 是 I 的二进制表示的第 k 位:
 
 <table>
 <tr>
@@ -74,28 +85,9 @@ N=4 时变换核: $$G_{4}=\begin{pmatrix}
 1 & -1 & -1 & 1
 \end{pmatrix}$$
 
-### 二阶离散沃尔什变换
+## 离散余弦变换 (DCT)
 
-设 G 为 N 阶沃尔什变换核矩阵:
-$$\begin{align}W&=\frac{1}{N^{2}}GfG\\ f&=GWG\end{align}$$
-
-### 离散哈达玛变换
-
-哈达玛变换 (DHT) 实际是沃尔什变换的特殊形式, 其变换核为沃尔什变换核的行重新排序, 优点是变换核矩阵有简单地推关系: $H_{2N}=\begin{bmatrix}H_{N}&H_{N}\\ H_{N}&-H_{N}\end{bmatrix}$
-
-$$H_{2}=\begin{pmatrix}
-1 & 1 \\
-1 & -1
-\end{pmatrix}$$
-
-$$H_{4}=\begin{pmatrix}
-1 & 1 & 1 & 1 \\
-1 & -1 & 1 & -1 \\
-1 & 1 & -1 & -1 \\
-1 & -1 & -1 & 1
-\end{pmatrix}$$
-
-## 离散余弦变换
+主要用于图像压缩，比如 JPEG 核心算法就是分块 DCT
 
 $$DCT(u,v)=\frac{2}{\sqrt{ MN }}C(u)C(v)∑\limits^{M-1}_{m=0}​∑\limits^{N-1}_{m=0}f(m,n)cos\left[ \frac{(2m+1)uπ}{2M}​ \right]cos\left[ \frac{(2n+1)vπ}{2N}​ \right]$$
 
@@ -116,8 +108,5 @@ $$f(x,y)=\frac{2}{N}∑\limits^{M-1}_{m=0}​∑\limits^{N-1}_{m=0}DCT(u, v)cos\
 
 ## 小波变换
 
-## 哈尔变换
+适合压缩、去噪、 边缘分析
 
-DHT
-
-$H(n)=\frac{1}{\sqrt{ N }}​∑\limits^{N−1}_{k=0}​f(k)\left[cos\left( \frac{2πkn​}{N} \right)+sin\left( \frac{2πkn}{N}​ \right)\right]$

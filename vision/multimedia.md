@@ -42,6 +42,11 @@ Retina (视网膜) is covered by light receptors (i.e., cones & rods, 视锥细�
 
 ![](../assets/vision/focal-length.webp)
 
+<figure>
+  <img src="../assets/vision/eyeball-myopia.webp">
+  <figcaption>Source: <a href="https://www.slideserve.com/terris/the-eye-and-cameras">Correcting Short and Long Sight</a></figcaption>
+</figure>
+
 安全的快门一般是等效焦距的倒数，焦距越长，快门防抖要求越高。
 
 相机的景深，高景深的条件：

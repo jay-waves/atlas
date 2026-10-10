@@ -2,6 +2,8 @@
 source: https://zhuanlan.zhihu.com/p/162275458  
 ---
 
+Sobel， Laplacian， 高通滤波，
+
 # 图像锐化
 
 图像模糊的原因:
@@ -44,18 +46,18 @@ source: https://zhuanlan.zhihu.com/p/162275458
 
 (5) 第五种, $$g\left( x,y \right) =\left\{ \begin{matrix} L_G&,G\left[ f\left( x,y \right) \right] \ge thresh\\ L_B&,otherwise\\ \end{matrix} \right.$$ 将背景和边缘用二值图像表示, 便于研究边缘所在位置.
 
-#### 2 Robert 梯度
-
-| i-1, j-1 | i-1, j |
-| ---- | --- |
-| i, j-1 | i, j |
-
-$$\begin{align}
-\triangle_{x}f(x,y)=f(x,y)-f(x-1,y-1) \\
-\triangle_{y}f(x,y)=f(x-1, y)-f(x,y-1)
-\end{align}$$
-
-$$G[f(x, y)]\approx\vert \triangle_{x}f(x,y)\vert\ +\ \vert\triangle_{y}f(x,y)\vert$$
+<!-- #### 2 Robert 梯度 -->
+<!---->
+<!-- | i-1, j-1 | i-1, j | -->
+<!-- | ---- | --- | -->
+<!-- | i, j-1 | i, j | -->
+<!---->
+<!-- $$\begin{align} -->
+<!-- \triangle_{x}f(x,y)=f(x,y)-f(x-1,y-1) \\ -->
+<!-- \triangle_{y}f(x,y)=f(x-1, y)-f(x,y-1) -->
+<!-- \end{align}$$ -->
+<!---->
+<!-- $$G[f(x, y)]\approx\vert \triangle_{x}f(x,y)\vert\ +\ \vert\triangle_{y}f(x,y)\vert$$ -->
 
 #### 3 Sobel 算子
 
@@ -118,7 +120,7 @@ $H=\left[ \begin{matrix} 1&-2&1\\ -2&5&-2\\ 1&-2&1\\ \end{matrix} \right]$
 
 锐化方法对噪声比较敏感.
 
-## Marr 边缘检测
+## Marr 边缘检测（理解即可）
 
 Marr 提出先使用高斯函数进行[图像平滑](图像去噪.md), 然后使用二阶拉普拉斯算子来求零交叉点 (二阶导数的交叉零点, 相当于一阶导数的峰). 
 
@@ -137,3 +139,7 @@ Marr 算子反映了人的视觉特性, 对于视神经细胞, 其输出称为 *
 形状匹配技术
 
 ...
+
+## Unsharp Masking 
+
+反锐化掩膜

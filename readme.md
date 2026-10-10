@@ -77,7 +77,12 @@
 ```html
 ![foo, 2008](xxx/yyy)
 
-<img src="xxx/yyy" alt="... @foo208">
+<figure>
+    <img src="xxx/yyy">
+  <figcaption>
+    Source: <a href="https://xxxx">@foo2008</a>
+  </figcaption>
+</figure>
 ```
 
 

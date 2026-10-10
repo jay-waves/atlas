@@ -117,6 +117,22 @@ ISO 则是传感器对光信号的增益（敏感）程度，增益小时，画�
 
 SLR (Single lens reflex camera, 单反相机)
 
+
+<figure>
+    <img src="../../assets/vision/spherical-aberrations.webp">
+  <figcaption>
+    Source: <a href="https://www.dpreview.com/articles/1449146848/closer-look-canon-rf-100mm-f2-8l-macro-is-usm">OpenStax</a>
+  </figcaption>
+</figure>
+
+
+理想条件下凸镜才有焦点，一般光学中还分为近轴焦点 (paraxial focus)、边缘光焦点、最佳焦点和各种像差。
+
+<figure>
+  <img src="../../assets/vision/thin-lens-eq.webp">
+  <figcaption>Source: <a href="https://wanda.fiu.edu/boeglinw/courses/Modern_lab_manual3/optical_instruments.html">Modern Lab Experiments 17.</a></figcaption>
+</figure>
+
 ## 
 
 ## Exposure

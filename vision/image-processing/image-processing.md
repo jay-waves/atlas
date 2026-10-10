@@ -23,19 +23,6 @@
 
 ==If you can not measure it, you can not improve it==
 
-图像质量: 
-
-- 图像保真度 (Fidelity): 处理后图像与原始图像之间的相似度 (忠实度, 失真度)
-- 图像可懂度 (Intelligiblity): 图像内容的可读性, 指观众能提取多少有效信息. 突出图像特征(关键信息), 可以提高图像可懂度, 但可能降低图像保真度.
-
-DMOS (Differential Mean Option Score) ...
-
-**灰度图像的失真度量 (逼真度)**:
-1. 归一化均方误差: $$NMSE=\frac{\sum^{J}\sum^{K}[g(j,k)-\hat{g}(j, k)]^{2}}{\sum^{J}\sum^{K}[g(j, k)]^{2}}$$ 其中 $g(j,k)$ 指单像素灰度值, $\hat{g}$ 是参考值.
-2. 峰值均方误差: $$PMSE=\frac{\sum^{J}\sum^{K}[g(j, k)-\hat{g}(j, k)]^{2}}{J\cdot K\cdot A^{2}}$$ 其中 A 就是灰度最大值 (8bit为255)
-3. 峰值信噪比, 等效于PMSE: $$PSNR=-10\log_{10}(PMSE)\ \ dB$$
-
-图像保真度评价: PSNR, PMSE, SSIM. PSNR 越大越好; 但是 PSNR 衡量并不准确, 比如整体左移一个像素点会导致保真度极低, 但是质量并没有变化.
 
 ### 数字图像色彩
 

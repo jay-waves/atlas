@@ -75,12 +75,13 @@ Foreign Exchange Instruments:
 
 ## Money Market Derivatives
 
-*Futures* :   
+*Futures* (期货):   
 a contract to but/sell an asset at a specified price on a future date.
 The underlying asset is usually: govn bonds, stock index, interest rates, commodity. 
 
 [*FRA (Forward Rate Agreement)*](./forward-rate.md):  
-an OTC contract that locks in an interest rate for a future period.
+an OTC (场外交易) forward contract that locks in an interest rate for a future period. 
+FRA 只在约定日期结算一次，OTC 市场；而 Futures 则是每日结算，在交易市场 (Exchange) 交易。
 
 [*Options*](./options.md):   
 Calls & Puts 
@@ -95,3 +96,4 @@ Eurocurrency: offshore US dollar
 Coupon / Yield: 
 
 Hedging / Speculation / Arbitrage: 金融衍生物的三种目的 套期保值（对冲）/ 投机 / 套利。
+投机是指预测未来价格变化 (Price Movement)，套利则是利用不同市场价格差 (Price Discrepancy). 

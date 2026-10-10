@@ -27,21 +27,22 @@ revised: 2026-01-27
 * 视频处理：ffmpeg、HandBrake、ClipChamp 
 * 图像处理：ImageMagic、GIMP3 
 * 媒体库：[Allusion](https://github.com/RafaUC/Allusion)、Calibre、Jellyfin 
-* 手机传文件：LocalSend     
+* ~~手机传文件：LocalSend~~     
 * 访达：Wox
 
 文件系统增强：
+
 * 文件压缩、解压缩：[7-Zip-zstd](https://github.com/mcmilk/7-Zip-zstd)
 * 文件系统缩略图：SageThumbs2K
 * 文件索引：Everything 
+* 文件格式转换（右键菜单增强）：~~[FileConverter](https://github.com/Tichau/FileConverter)~~
+* 右键菜单管理：ContextMenuManagerv4.6
 
-### Windows OS
+Windows 系统：
 
-* 刷盘：refus 
-* 流量和硬件监控: ~~Traffic Monitor~~ 改为 [taskbar-monitor](https://github.com/leandrosa81/taskbar-monitor)
-* 硬件监控：LibreHardwareMonitor 
-* CPU 性能测试：CPU-Z
-* 硬盘管理：CrystallDiskInfo、DiskGenius 
+* Sysinternals Process Explorer，有一个 TrayIcons 挺好用，比自带的资源管理器好用
+* 硬件信息：CPU-Z, DiskGenius, LibreHardwareMonitor
+* HotCornersWin
 
 ## Shell & Terminal 
 
